@@ -57,26 +57,32 @@
         %>
         <div>
             <h1>Bienvenue <%= userSession.getAttribute("firstname") + " " +  userSession.getAttribute("name") %></h1>
+            <a href="../page2.html">Menu principal</a>
         </div>
         <%
         } else if (userSession.getAttribute("identifiant") == null && userSession.getAttribute("success") == null) {
         %>
         <h1>Connexion</h1>
         <form action="accueil.jsp" method="post">
-            <div>
-                <label for="email">Email : </label>
-                <input type="text" name="email" id="email" required>
-            </div>
-            <div>
-                <label for="pass">Mot de passe : </label>
-                <input type="text" name="pass" id="pass" required>
-            </div>
+            <table>
+                <tr>
+                    <td><label for="email">Email : </label></td>
+                    <td><input type="text" name="email" id="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="pass">Mot de passe : </label></td>
+                    <td><input type="password" name="pass" id="pass" required></td>
+                </tr>
+            </table>
             <div>
                 <input type="submit" value="Envoyer">
             </div>
         </form>
         <div>
+            <br/>
             <a href="./register.html">Page d'inscription</a>
+            <br/>
+            <a href="../page2.html">Menu principal</a>
         </div>
         <%
         } else if (userSession.getAttribute("success").equals(false)) {

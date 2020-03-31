@@ -14,28 +14,33 @@ and open the template in the editor.
         <div>
             <h1>Inscription</h1>
             <form action="../InsertUserServlet" method="post">
-                <div>
-                    <label for="name">Nom : </label>
-                    <input type="text" name="name" id="name" required>
-                </div>
-                <div>
-                    <label for="firstname">Prénom : </label>
-                    <input type="text" name="firstname" id="firstname" required>
-                </div>
-                <div>
-                    <label for="email">Email : </label>
-                    <input type="text" name="email" id="email" required>
-                </div>
-                <div>
-                    <label for="pass">Mot de passe : </label>
-                    <input type="text" name="pass" id="pass" required>
-                </div>
+                <table>
+                    <tr>
+                        <td><label for="name">Nom : </label></td>
+                        <td><input type="text" name="name" id="name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="firstname">Prénom : </label></td>
+                        <td><input type="text" name="firstname" id="firstname" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email : </label></td>
+                        <td><input type="text" name="email" id="email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="pass">Mot de passe : </label></td>
+                        <td><input type="password" name="pass" id="pass" required></td>
+                    </tr>
+                </table>
                 <div>
                     <input type="submit" value="Envoyer">
                 </div>
             </form>
             <div>
-                <a href="./signin.html">Page de connexion</a>
+                <br/>
+                <a href="./accueil.jsp">Page de connexion</a>
+                <br/>
+                <a href="../page2.html">Menu principal</a>
             </div>
         </div>
     </body>
