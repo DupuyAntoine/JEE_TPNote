@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package webapp1;
+package backoffice;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -80,7 +80,7 @@ public class InitializeTables extends HttpServlet {
 
             ps.executeUpdate("INSERT INTO CATEGORY(NAME, DESCRIPTION) VALUES ('Cours', 'Cours sur un domaine spécifique')");
             
-            out.println("<h1>Table user créée</h1>");
+            out.println("<h1>Tables user, service, category créées</h1>");
             out.println("<a href='./page2.html'>Retour accueil</a>");
 
 
