@@ -40,7 +40,7 @@
         
         HttpSession userSession = request.getSession();
 
-        if (!email.equals("") && !pass.equals("")) {
+        if (email != null && pass != null) {
             userSession.setAttribute("success", false);
         }
 
@@ -84,6 +84,7 @@
         <h1>Erreur login</h1>
         <a href="./accueil.jsp">Retour login</a>
         <%
+        userSession.removeAttribute("success");
         }
         %>
     </body>
