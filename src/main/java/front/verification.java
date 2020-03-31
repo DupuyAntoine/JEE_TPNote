@@ -42,7 +42,7 @@ public class verification extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("identifiant", email);
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("../accueil.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./accueil.jsp");
             dispatcher.forward(request, response);
         }
     }
