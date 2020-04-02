@@ -30,6 +30,14 @@
         Object refRecherchee = initCtx.lookup("jdbc/__default");
         DataSource ds = (DataSource)refRecherchee;
         Connection con = ds.getConnection();
+        
+        String serviceIdToDelete = request.getParameter("service_id");
+        
+        if(serviceIdToDelete != null)
+        {
+            Statement ps = con.createStatement();
+            ps.executeUpdate("delete from SERVICE where ID = " + serviceIdToDelete);
+        }
 
         Statement ps = con.createStatement();
 
@@ -86,6 +94,12 @@
                     rs3.next();
                     %>
                     <td><%= rs3.getString("NAME")%></td>
+                    <td>
+                        <form action="accueil.jsp" method="post">
+                            <input type='hidden' name='service_id' value='<%= rs2.getString("ID")%>'>
+                            <input type='submit' value='Delete'>
+                        </form>
+                    </td>
                 </tr>
                 <%}%>
             </table>
