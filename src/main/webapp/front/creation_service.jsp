@@ -56,54 +56,54 @@
             + " VALUES "
             + "('" + title + "', '" + description + "', '" + location + "', " + Float.parseFloat(cost) + ", " + Integer.parseInt(category) + ", " + userId + ")");
             
-        }
-
-        if (userSession.getAttribute("identifiant") != null) {
-        %>
-            <h1>Création de service</h1>
-            <form action="creation_service.jsp" method="post">
-                <table>
-                    <tr>
-                        <td><label for="title">Titre : </label></td>
-                        <td><input type="text" name="title" id="title" required></td>
-                        <td><label for="description">Description : </label></td>
-                        <td><input type="text" name="description" id="description" required></td>
-                        <td><label for="location">Durée : </label></td>
-                        <td>
-                            <select name="location" id="location" required>
-                                <option value="heure">Heure</option>
-                                <option value="demijournee">Demi-journée</option>
-                                <option value="jour">Jour</option>
-                                <option value="semaine">Semaine</option>
-                            </select>
-                        </td>
-                        <td><label for="cost">Coût : </label></td>
-                        <td><input type="text" name="cost" id="cost" required></td>
-                        <td><label for="category">Categorie : </label></td>
-                        <td>
-                            <select name="category" id="category" required>
-                                <option value="">Choisir</option>
-                                <%
-                                while (rs.next()) {
-                                %>
-                                <option value="<%=rs.getString("ID")%>"><%= rs.getString("NAME")%></option>
-                                <%
-                                }
-                                %>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-                <div>
-                    <input type="submit" value="Envoyer">
-                </div>
-            </form>
-        <%
         } else {
-        %>
-            <h1>Vous n'êtes pas connecté !</h1>
-            <a href='./accueil.jsp'>Retour Connexion</a>
-        <%
+            if (userSession.getAttribute("identifiant") != null) {
+            %>
+                <h1>Création de service</h1>
+                <form action="creation_service.jsp" method="post">
+                    <table>
+                        <tr>
+                            <td><label for="title">Titre : </label></td>
+                            <td><input type="text" name="title" id="title" required></td>
+                            <td><label for="description">Description : </label></td>
+                            <td><input type="text" name="description" id="description" required></td>
+                            <td><label for="location">Durée : </label></td>
+                            <td>
+                                <select name="location" id="location" required>
+                                    <option value="heure">Heure</option>
+                                    <option value="demijournee">Demi-journée</option>
+                                    <option value="jour">Jour</option>
+                                    <option value="semaine">Semaine</option>
+                                </select>
+                            </td>
+                            <td><label for="cost">Coût : </label></td>
+                            <td><input type="text" name="cost" id="cost" required></td>
+                            <td><label for="category">Categorie : </label></td>
+                            <td>
+                                <select name="category" id="category" required>
+                                    <option value="">Choisir</option>
+                                    <%
+                                    while (rs.next()) {
+                                    %>
+                                    <option value="<%=rs.getString("ID")%>"><%= rs.getString("NAME")%></option>
+                                    <%
+                                    }
+                                    %>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <div>
+                        <input type="submit" value="Envoyer">
+                    </div>
+                </form>
+            <%
+            } else {
+            %>
+                <h1>Vous n'êtes pas connecté !</h1>
+                <a href='./accueil.jsp'>Retour Connexion</a>
+            <%
+            }
         }
         %>
     </body>
