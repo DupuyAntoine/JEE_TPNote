@@ -42,6 +42,21 @@
         String location = request.getParameter("location");
         String cost = request.getParameter("cost");
         String category = request.getParameter("category");
+        
+        if (
+            title != null &&
+            description != null &&
+            location != null &&
+            cost != null &&
+            category != null
+           ) {
+            Integer userId = Integer.parseInt((String)userSession.getAttribute("id"));
+            ps.executeUpdate("INSERT INTO "
+            + "SERVICE(TITLE, DESCRIPTION, LOCATION, COST, CATEGORYID, USERID)"
+            + " VALUES "
+            + "('" + title + "', '" + description + "', '" + location + "', " + Float.parseFloat(cost) + ", " + Integer.parseInt(category) + ", " + userId + ")");
+            
+        }
 
         if (userSession.getAttribute("identifiant") != null) {
         %>
@@ -54,7 +69,14 @@
                         <td><label for="description">Description : </label></td>
                         <td><input type="text" name="description" id="description" required></td>
                         <td><label for="location">Durée : </label></td>
-                        <td><input type="text" name="location" id="location" required></td>
+                        <td>
+                            <select name="location" id="location" required>
+                                <option value="heure">Heure</option>
+                                <option value="demijournee">Demi-journée</option>
+                                <option value="jour">Jour</option>
+                                <option value="semaine">Semaine</option>
+                            </select>
+                        </td>
                         <td><label for="cost">Coût : </label></td>
                         <td><input type="text" name="cost" id="cost" required></td>
                         <td><label for="category">Categorie : </label></td>
