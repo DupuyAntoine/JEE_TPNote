@@ -58,6 +58,40 @@
         %>
         <div>
             <h1>Bienvenue <%= userSession.getAttribute("firstname") + " " +  userSession.getAttribute("name") %></h1>
+            
+            <h2>Services proposés</h2>
+            
+            <table border='4'>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Coût</th>
+                    <th>Catégorie</th>
+                </tr>
+                <%
+                Statement ps2 = con.createStatement();
+                ResultSet rs2 = ps2.executeQuery("select * from SERVICE where USERID = " + (String)userSession.getAttribute("id"));
+                                
+                while (rs2.next()) {
+                %>
+                <tr>
+                    <td><%= rs2.getString("TITLE")%></td>
+                    <td><%= rs2.getString("DESCRIPTION")%></td>
+                    <td><%= rs2.getString("LOCATION")%></td>
+                    <td><%= rs2.getString("COST")%></td>
+                    <%
+                    Statement ps3 = con.createStatement();
+                    ResultSet rs3 = ps3.executeQuery("select * from CATEGORY where ID = " + rs2.getString("CATEGORYID"));
+                    rs3.next();
+                    %>
+                    <td><%= rs3.getString("NAME")%></td>
+                </tr>
+                <%}%>
+            </table>
+            <br/>
+            <a href="./creation_service.jsp">Créer un service</a>
+            <br/>
             <a href="../page2.html">Menu principal</a>
         </div>
         <%

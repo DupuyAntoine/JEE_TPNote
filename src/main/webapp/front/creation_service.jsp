@@ -54,8 +54,11 @@
             ps.executeUpdate("INSERT INTO "
             + "SERVICE(TITLE, DESCRIPTION, LOCATION, COST, CATEGORYID, USERID)"
             + " VALUES "
-            + "('" + title + "', '" + description + "', '" + location + "', " + Float.parseFloat(cost) + ", " + Integer.parseInt(category) + ", " + userId + ")");
-        } else {
+            + "('" + title + "', '" + description + "', '" + location + "', " + Float.parseFloat(cost) + ", " + Integer.parseInt(category) + ", " + userId + ")");%>
+            
+            <jsp:forward page="accueil.jsp" />
+            
+        <%} else {
             if (userSession.getAttribute("identifiant") != null) {
             %>
                 <h1>Création de service</h1>
@@ -63,9 +66,13 @@
                     <table>
                         <tr>
                             <td><label for="title">Titre : </label></td>
-                            <td><input type="text" name="title" id="title" required></td>
+                            <td><input type="text" name="title" id="title" required></td>   
+                        </tr>
+                        <tr>
                             <td><label for="description">Description : </label></td>
-                            <td><input type="text" name="description" id="description" required></td>
+                            <td><input type="text" name="description" id="description" required></td> 
+                        </tr>
+                        <tr>
                             <td><label for="location">Durée : </label></td>
                             <td>
                                 <select name="location" id="location" required>
@@ -74,9 +81,12 @@
                                     <option value="jour">Jour</option>
                                     <option value="semaine">Semaine</option>
                                 </select>
-                            </td>
+                            </td> 
+                        </tr>
                             <td><label for="cost">Coût : </label></td>
-                            <td><input type="text" name="cost" id="cost" required></td>
+                            <td><input type="text" name="cost" id="cost" required></td> 
+                        <tr>                            
+                        <tr>                           
                             <td><label for="category">Categorie : </label></td>
                             <td>
                                 <select name="category" id="category" required>
@@ -90,8 +100,9 @@
                                     %>
                                 </select>
                             </td>
-                        </tr>
+                        </tr>                            
                     </table>
+                    <br/>
                     <div>
                         <input type="submit" value="Envoyer">
                     </div>
