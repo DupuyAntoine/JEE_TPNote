@@ -55,7 +55,6 @@
             + "SERVICE(TITLE, DESCRIPTION, LOCATION, COST, CATEGORYID, USERID)"
             + " VALUES "
             + "('" + title + "', '" + description + "', '" + location + "', " + Float.parseFloat(cost) + ", " + Integer.parseInt(category) + ", " + userId + ")");
-            
         } else {
             if (userSession.getAttribute("identifiant") != null) {
             %>
