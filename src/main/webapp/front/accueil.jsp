@@ -105,6 +105,10 @@
             </table>
             <br/>
             <a href="./creation_service.jsp">Créer un service</a>
+            <a href="./recherche.jsp"></a>
+            <form action="logout.jsp" method="post">
+                <input type="submit" value="logout" />
+            </form>
             <br/>
             <a href="../page2.html">Menu principal</a>
         </div>
