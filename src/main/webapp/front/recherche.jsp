@@ -16,7 +16,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
+        <title>Recherche de service</title>
     </head>
     <body>
         <%
@@ -27,7 +27,7 @@
             System.out.println("Erreur de chargement du service de nommage");
         }
         // Connexion ? la base de donn?es enregistr?e dans le serveur de nom sous le nom "sample"
-        Object refRecherchee = initCtx.lookup("jdbc/__default");
+        Object refRecherchee = initCtx.lookup("jdbc/tp3");
         DataSource ds = (DataSource)refRecherchee;
         Connection con = ds.getConnection();
 
@@ -64,8 +64,8 @@
         ResultSet rs = ps2.executeQuery("select * from CATEGORY");
         if (userSession.getAttribute("identifiant") != null) {
         %>
-            <h1>Création de service</h1>
-            <form action="recherche.jsp" method="GET">
+            <h1>Recherche de service</h1>
+            <form action="recherche.jsp" method="post">
                 <table>
                     <tr>
                         <td><label for="title">Titre : </label></td>
@@ -102,6 +102,7 @@
                     <input type="submit" value="Rechercher">
                 </div>
             </form>
+            <br/>
             <table>
                 <thead>
                     <th>ID</th>
@@ -126,6 +127,8 @@
                     %>
                 </tbody>
             </table>
+            <br/>
+            <a href="./accueil.jsp">Retour</a>
         <%
         } else {
         %>

@@ -55,7 +55,7 @@ public class ServletDBTest extends HttpServlet {
             }
             
             // Connexion ? la base de donn?es enregistr?e dans le serveur de nom sous le nom "sample"
-            Object refRecherchee = initCtx.lookup("jdbc/__default");
+            Object refRecherchee = initCtx.lookup("jdbc/tp3");
             DataSource ds = (DataSource)refRecherchee;
             Connection con = ds.getConnection();
             

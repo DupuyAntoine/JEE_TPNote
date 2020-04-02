@@ -16,7 +16,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
+        <title>Création de service</title>
     </head>
     <body>
         <%
@@ -27,7 +27,7 @@
             System.out.println("Erreur de chargement du service de nommage");
         }
         // Connexion ? la base de donn?es enregistr?e dans le serveur de nom sous le nom "sample"
-        Object refRecherchee = initCtx.lookup("jdbc/__default");
+        Object refRecherchee = initCtx.lookup("jdbc/tp3");
         DataSource ds = (DataSource)refRecherchee;
         Connection con = ds.getConnection();
 

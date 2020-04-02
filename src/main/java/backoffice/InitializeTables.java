@@ -49,7 +49,7 @@ public class InitializeTables extends HttpServlet {
                 System.out.println("Erreur de chargement du service de nommage");
             }
             // Connexion ? la base de donn?es enregistr?e dans le serveur de nom sous le nom "sample"
-            Object refRecherchee = initCtx.lookup("jdbc/__default");
+            Object refRecherchee = initCtx.lookup("jdbc/tp3");
             DataSource ds = (DataSource)refRecherchee;
             Connection con = ds.getConnection();
             // Cr?ation d'une requ?te sans param?tres
@@ -74,9 +74,9 @@ public class InitializeTables extends HttpServlet {
             }
 
             
-            ps.executeUpdate("CREATE TABLE USER(ID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, NAME VARCHAR(30), FIRSTNAME VARCHAR(30), EMAIL VARCHAR(255), PASSWORD VARCHAR(255), LEVEL INT)");
-            ps.executeUpdate("CREATE TABLE SERVICE(ID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, TITLE VARCHAR(30), DESCRIPTION VARCHAR(255), LOCATION ENUM('heure', 'demijournee', 'jour', 'semaine'), COST FLOAT, USERID INT, CATEGORYID INT)");
-            ps.executeUpdate("CREATE TABLE CATEGORY(ID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, NAME VARCHAR(30), DESCRIPTION VARCHAR(100))");
+            ps.executeUpdate("CREATE TABLE USER(ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT, NAME VARCHAR(30), FIRSTNAME VARCHAR(30), EMAIL VARCHAR(255), PASSWORD VARCHAR(255), LEVEL INT)");
+            ps.executeUpdate("CREATE TABLE SERVICE(ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT, TITLE VARCHAR(30), DESCRIPTION VARCHAR(255), LOCATION ENUM('heure', 'demijournee', 'jour', 'semaine'), COST FLOAT, USERID INT, CATEGORYID INT)");
+            ps.executeUpdate("CREATE TABLE CATEGORY(ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT, NAME VARCHAR(30), DESCRIPTION VARCHAR(100))");
 
             ps.executeUpdate("INSERT INTO CATEGORY(NAME, DESCRIPTION) VALUES ('Cours', 'Cours sur un domaine spécifique')");
             ps.executeUpdate("INSERT INTO CATEGORY(NAME, DESCRIPTION) VALUES ('Jardinage', 'La main verte')");

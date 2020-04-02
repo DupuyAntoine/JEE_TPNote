@@ -27,7 +27,7 @@
             System.out.println("Erreur de chargement du service de nommage");
         }
         // Connexion ? la base de donn?es enregistr?e dans le serveur de nom sous le nom "sample"
-        Object refRecherchee = initCtx.lookup("jdbc/__default");
+        Object refRecherchee = initCtx.lookup("jdbc/tp3");
         DataSource ds = (DataSource)refRecherchee;
         Connection con = ds.getConnection();
         
@@ -105,12 +105,14 @@
             </table>
             <br/>
             <a href="./creation_service.jsp">Créer un service</a>
-            <a href="./recherche.jsp"></a>
-            <form action="logout.jsp" method="post">
-                <input type="submit" value="logout" />
-            </form>
+            <br/>
+            <a href="./recherche.jsp">Recherche</a>            
             <br/>
             <a href="../page2.html">Menu principal</a>
+            <br/>
+            <form action="logout.jsp" method="post">
+                <input type="submit" value="Logout" />
+            </form>
         </div>
         <%
         } else if (userSession.getAttribute("identifiant") == null && userSession.getAttribute("success") == null) {
