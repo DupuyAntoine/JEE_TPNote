@@ -47,6 +47,7 @@
         while (rs.next()) {
             if (rs.getString("PASSWORD").equals(pass) && rs.getString("EMAIL").equals(email)) {
                 userSession.setAttribute("identifiant", email);
+                userSession.setAttribute("id", rs.getString("ID"));
                 userSession.setAttribute("name", rs.getString("NAME"));
                 userSession.setAttribute("firstname", rs.getString("FIRSTNAME"));
                 userSession.setAttribute("success", true);

@@ -79,7 +79,9 @@ public class InitializeTables extends HttpServlet {
             ps.executeUpdate("CREATE TABLE CATEGORY(ID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, NAME VARCHAR(30), DESCRIPTION VARCHAR(100))");
 
             ps.executeUpdate("INSERT INTO CATEGORY(NAME, DESCRIPTION) VALUES ('Cours', 'Cours sur un domaine spécifique')");
-            
+            ps.executeUpdate("INSERT INTO CATEGORY(NAME, DESCRIPTION) VALUES ('Jardinage', 'La main verte')");
+            ps.executeUpdate("INSERT INTO CATEGORY(NAME, DESCRIPTION) VALUES ('Bricolage', 'Un peu de bricolage')");
+
             out.println("<h1>Tables user, service, category créées</h1>");
             out.println("<a href='./page2.html'>Retour accueil</a>");
 

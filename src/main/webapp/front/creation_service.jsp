@@ -33,13 +33,49 @@
 
         Statement ps = con.createStatement();
 
-        ResultSet rs = ps.executeQuery("select * from USER");
+        ResultSet rs = ps.executeQuery("select * from CATEGORY");
         
         HttpSession userSession = request.getSession();
+        
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+        String location = request.getParameter("location");
+        String cost = request.getParameter("cost");
+        String category = request.getParameter("category");
 
         if (userSession.getAttribute("identifiant") != null) {
         %>
-            <h1>Page accueil service!</h1>
+            <h1>Création de service</h1>
+            <form action="creation_service.jsp" method="post">
+                <table>
+                    <tr>
+                        <td><label for="title">Titre : </label></td>
+                        <td><input type="text" name="title" id="title" required></td>
+                        <td><label for="description">Description : </label></td>
+                        <td><input type="text" name="description" id="description" required></td>
+                        <td><label for="location">Durée : </label></td>
+                        <td><input type="text" name="location" id="location" required></td>
+                        <td><label for="cost">Coût : </label></td>
+                        <td><input type="text" name="cost" id="cost" required></td>
+                        <td><label for="category">Categorie : </label></td>
+                        <td>
+                            <select name="category" id="category" required>
+                                <option value="">Choisir</option>
+                                <%
+                                while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString("ID")%>"><%= rs.getString("NAME")%></option>
+                                <%
+                                }
+                                %>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <input type="submit" value="Envoyer">
+                </div>
+            </form>
         <%
         } else {
         %>
